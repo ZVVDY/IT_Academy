@@ -3,37 +3,50 @@ package task.task2.TaskHome3;
 import java.util.Scanner;
 
 public class RainbowMain {
-    public static void main(String[] args) {
-        printTitle();
-        scannerNumber();
-    }
-    public static void scannerNumber() {
-        Scanner scanner = new Scanner(System.in);
-        int numberColor = scanner.nextInt();
-        int numberColorTwo = scanner.nextInt();
-        Rainbow myRainbow = new Rainbow();
-        //myRainbow.numberColor();
-        if (numberColor <= 7 && numberColorTwo <= 7 && numberColor > 0) {
+    public static Scanner scanner = new Scanner(System.in);
+    static int colorCount;
+    static int numberColor;
+    static int numberColorTwo;
+    public static Rainbow myRainbow = new Rainbow();
 
-            if (numberColor == numberColorTwo) {
-                myRainbow.colorSelection(numberColor);
-            }
-            else if (numberColor <= 7) {
-                myRainbow.colorSelection(numberColor);
-            } else if (numberColorTwo <= 7) {
-                myRainbow.colorSelectionTwo(numberColorTwo);
+    public static void main(String[] args) {
+        colorCount();
+        scannerNumber(colorCount);
+        myRainbow.printColorTerminal(numberColor, numberColorTwo, colorCount);
+    }
+
+    public static void colorCount() {
+        int numberScanner = 0;
+        while (true) {
+            System.out.println("Введите колличество цветов");
+            numberScanner = scanner.nextInt();
+            if (numberScanner < 1 || numberScanner > 2) {
+                System.out.println("Вы ввели неверное количество цветов, повторите ввод\n--------------------------------");
             } else {
-                System.out.println("Вы ввели не верное число");
+                colorCount = numberScanner;
+                System.out.println("Введенное кол-во цветов равно: " + colorCount);
+                break;
             }
+
         }
     }
-    public static void printTitle() {
-        System.out.println("Программа Радуга" + "\nВведите цифру цвета, через пробел, для вывода на консоль:");
-        System.out.println("1.Красный" + "\n2.Оранжевы" + "\n3.Желтый" + "\n4.Зеленый");
-        System.out.println("5.Голубой" + "\n6.Синий" + "\n7.Фиолетовый");
 
+    public static void scannerNumber(int count) {
+        System.out.println("Введите номер цвета:\n1.Красный\n2.Оранжевы\n3.Желтый\n4.Зеленый" +
+                "\n5.Голубой\n6.Синий\n7.Фиолетовый");
+        numberColor = scanner.nextInt();
+        if (colorCount == 2) {
+            System.out.println("Введите второй номер цвета:\n1.Красный\n2.Оранжевы\n3.Желтый\n4.Зеленый" +
+                    "\n5.Голубой\n6.Синий\n7.Фиолетовый");
+            numberColorTwo = scanner.nextInt();
+        }
     }
 }
+
+
+
+
+
 
 
 

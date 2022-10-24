@@ -1,13 +1,13 @@
 package task.task2.TaskHome3;
 
 public class Rainbow {
-    public static final String RED = "красный";
-    public static final String ORANGE = "оранжевый";
-    public static final String YELLOW = "желтый";
-    public static final String GREEN = "зеленый";
-    public static final String BLUE = "голубой";
-    public static final String DARK_BLUE = "синий";
-    public static final String PURPLE = "фиолетовый";
+    public static final String RED = "red";
+    public static final String ORANGE = "orange";
+    public static final String YELLOW = "yellow";
+    public static final String GREEN = "green";
+    public static final String BLUE = "blue";
+    public static final String INDIGO = "indigo";
+    public static final String VIOLET = "violet";
 
     public int colorSelection(int number) {
         switch (number) {
@@ -27,10 +27,10 @@ public class Rainbow {
                 printColor(BLUE);
                 break;
             case 6:
-                printColor(DARK_BLUE);
+                printColor(INDIGO);
                 break;
             case 7:
-                printColor(PURPLE);
+                printColor(VIOLET);
                 break;
             default:
                 printColor("Такого цвета не существует. Вы ввели не верное число");
@@ -40,18 +40,17 @@ public class Rainbow {
 
     }
 
-    public int colorSelectionTwo(int numberTwo) {
-        //int numberw=colorSelection();
-        if (numberTwo <= 7) {
-            colorSelection(numberTwo);
-        } else {
-            printColor("Вы ввели неверное число.Введите еще раз!");
-
-        }
-        return numberTwo;
-    }
-
     public void printColor(String textColor) {
-        System.out.println(textColor);
+        System.out.print(textColor);
+    }
+    public void printColorTerminal(int numberPrint, int numberPrintTwo, int numberColors) {
+        if (numberColors == 1 || numberPrint==numberPrintTwo) {
+            colorSelection(numberPrint);}
+        else {
+            colorSelection(numberPrint);
+            System.out.print(" - ");
+            colorSelection(numberPrintTwo);
+        }
+
     }
 }
