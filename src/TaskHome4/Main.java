@@ -1,16 +1,22 @@
 package TaskHome4;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
     public static int quantityCat = 0;
-    public static Cat[] matroskin = new Cat[10];
+    //public static Cat[] matroskin = new Cat[10];
+    public static ArrayList cats = new ArrayList();
+
+    public Main() {
+        this.cats.add(this);// добавление "кота" в список при вызове конструктора
+    }
 
     public static void main(String[] args) {
         oneCreateCat();
         twoCreateCat();
         threeCreateCat();
-        fourCreateCat(matroskin);
+        fourCreateCat();
     }
 
     public static void oneCreateCat() {
@@ -20,6 +26,7 @@ public class Main {
             System.out.println(basrsik);
             quantityCat++;
         }
+        System.out.println();
     }
 
     public static void twoCreateCat() {
@@ -33,41 +40,33 @@ public class Main {
             System.out.println("Name: " + barsik.getNameCat() + " Age: " + barsik.getAgeCat());
         }
         quantityCat = 0;
+        System.out.println();
     }
 
     public static void threeCreateCat() {
         System.out.println("Вывод 10 котов созданных с помощью do while: ");
         do {
             Cat basrsik = new Cat(newRandomName(), ageRandom(1, 28));
-            matroskin[quantityCat] = basrsik;//записываю в массив котов
+            cats.add(basrsik);//записываю в массив котов
             System.out.println(basrsik);
             quantityCat++;
-
         }
         while (quantityCat < 10);
         quantityCat = 0;
+        System.out.println();
     }
 
     public static void fourCreateCat() {
-//Cat [] vasil=new Cat[5];
-////vasil[0]=new Cat();
-////vasil[1]=new Cat();
-////vasil[2]=new Cat();
-////vasil[3]=new Cat();
-////vasil[4]=new Cat();
-////vasil[5]=new Cat();
-        for (quantityCat:
-             vasil) {
-            System.out.println([matroskin]);
-
+        for (Object i : cats) {
+            System.out.println("Вывод котов с помощью fori: ");
+            System.out.println(i);
+            if (quantityCat == 4) {
+                return;
+            }
+            quantityCat++;
         }
+        System.out.println("Программа выполнена!Спасибо.");
     }
-
-    {
-        System.out.println(Main.matroskin[0]);
-    }
-
-}
 
     private static int ageRandom(int startNum, int endNum) {
         Random random = new Random();

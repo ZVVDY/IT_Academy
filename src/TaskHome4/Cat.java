@@ -1,14 +1,11 @@
 package TaskHome4;
 
-import java.util.Random;
-
 public class Cat {
     private int ageCat = 7;
     private String nameCat = "Bars";
 
     public Cat() {
     }
-
 
     public void setNameCat(String randomCatFor) {
         this.nameCat = randomCatFor;
@@ -27,7 +24,7 @@ public class Cat {
     }
 
     public Cat(String nameCreate, int ageCreate) {
-        System.out.println("Конструктор сработал для ");
+        System.out.println("Конструктор сработал для объекта: ");
         this.nameCat = nameCreate;
         this.ageCat = ageCreate;
     }
@@ -35,8 +32,6 @@ public class Cat {
     public String toString() {
         return nameCat + " ," + ageCat;
     }
-
-
 }
 
 
