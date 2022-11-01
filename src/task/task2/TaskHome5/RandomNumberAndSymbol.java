@@ -1,20 +1,18 @@
 package task.task2.TaskHome5;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
+/**
+ * Класс для выбора рандомных значений double и символов
+ */
 public class RandomNumberAndSymbol {
-    public static String randomNumber = doubleRandom();
     public static String randomSymbol = symbolRandomN();
 
-    public static String doubleRandom() {
+
+    public static double doubleRandom(int number) {
         Random random = new Random();
-
-        double numRand = random.nextDouble() + 1;
-        String formattedDouble = new DecimalFormat("#0.00000").format(numRand);
-        //System.out.println(formattedDouble);
-        return formattedDouble;
-
+        //numberTextRandom(1,28);
+        return random.nextDouble(number);
     }
 
     private static int numberTextRandom(int startNum, int endNum) {

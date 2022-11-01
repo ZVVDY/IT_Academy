@@ -1,36 +1,30 @@
 package task.task2.TaskHome5;
 
 import java.util.Arrays;
-import java.lang.String;
-import java.lang.StringBuilder;
 
 import static task.task2.TaskHome5.RandomNumberAndSymbol.*;
 
+/**
+ * Класс выполняет работу с матрицами и ее диагоналями
+ */
 public class WorkArrays {
+    private String[][] stringsMatrix = new String[10][10];
+    private String[] oneDiaganal = new String[10];
+    private String[] twoDiaganal = new String[10];
+    private String[] newStringMatrix = new String[20];
+    private String[] finalStringMatrix;
+    private StringBuilder builderStringAndArray = new StringBuilder();
 
-    public static String[][] stringsMatrix = new String[10][10];
-    public static String[] oneDiaganal = new String[10];
-    public static String[] twoDiaganal = new String[10];
-    public static String[] newStringMatrix = new String[20];
-    public static String[] finalStringMatrix;
-    public static StringBuilder builderStringAndArray = new StringBuilder();
-
-    public static void runnerProgram() {
-        createMatrixDoubleText();
-        comparisonOfDiagonals();
-        comparisonOfArrayDiagonals();
-        copyingDiagonalsNewArray();
-        printStringsAndDoubles();
-        printFirstMatrix();
-    }
-
-    public static void createMatrixDoubleText() {
+    /**
+     * Метод создания матрицы
+     */
+    public void createMatrixDoubleText() {
         int arrayFillNumber = 0;
         for (int i = 0; i < stringsMatrix.length; i++) {
             for (int j = 0; j < stringsMatrix.length; j++) {
                 arrayFillNumber++;
                 if (arrayFillNumber % 3 == 0) {
-                    stringsMatrix[i][j] = String.valueOf(doubleRandom());
+                    stringsMatrix[i][j] = String.valueOf(doubleRandom(3)).substring(0, 7);
 
                 } else {
 
@@ -38,9 +32,13 @@ public class WorkArrays {
                 }
             }
         }
+        comparisonOfDiagonals();
     }
 
-    public static void comparisonOfDiagonals() {
+    /**
+     * Метод извлечения диагоналей для сравнения
+     */
+    public void comparisonOfDiagonals() {
 
         int counterNumberDiaganal = 0;
         for (int i = 0; i < stringsMatrix.length; i++) {
@@ -60,18 +58,26 @@ public class WorkArrays {
             }
             counterNumberDiaganal++;
         }
+        comparisonOfArrayDiagonals();
     }
 
-    public static void comparisonOfArrayDiagonals() {
+    /**
+     * Метод сравнения диагоналей
+     */
+    public void comparisonOfArrayDiagonals() {
 
         if (Arrays.equals(oneDiaganal, twoDiaganal)) {
             System.out.println("Диагонали равны");
         } else {
             System.out.println("Диагонали не равны");
         }
+        copyingDiagonalsNewArray();
     }
 
-    public static void copyingDiagonalsNewArray() {
+    /**
+     * Метод копирования диагоналей в новый массив
+     */
+    public void copyingDiagonalsNewArray() {
 
         int counter = 0;
         for (int i = 0; i < newStringMatrix.length; i++) {
@@ -83,12 +89,17 @@ public class WorkArrays {
                 counter++;
             }
         }
+        printStringsAndDoubles();
     }
 
-    public static void printStringsAndDoubles() {
+    /**
+     * Метод извлечения символов и округления с выводом в консоль
+     */
+    public void printStringsAndDoubles() {
 
         double tempArrayForDouble[] = new double[newStringMatrix.length];
         int countOfDouble = -1;
+        double roundedNumber;
         for (int i = 0; i < newStringMatrix.length; i++) {
 
             if (!newStringMatrix[i].contains(".")) {
@@ -99,7 +110,11 @@ public class WorkArrays {
                 builderStringAndArray.append(substring);
             } else {
                 double doubleOfArray = Double.parseDouble(newStringMatrix[i]);
-                double roundedNumber = Math.round(doubleOfArray);
+                if (doubleOfArray > 1.7) {
+                    roundedNumber = Math.ceil(doubleOfArray);
+                } else {
+                    roundedNumber = Math.floor(doubleOfArray);
+                }
                 countOfDouble++;
                 tempArrayForDouble[countOfDouble] = roundedNumber;
             }
@@ -112,9 +127,13 @@ public class WorkArrays {
         System.out.println();
         System.out.println(String.join("_", finalStringMatrix));
         System.out.println();
+        printFirstMatrix();
     }
 
-    public static void printFirstMatrix() {
+    /**
+     * Метод вывода в консоль первоначальной матрицы
+     */
+    public void printFirstMatrix() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 System.out.print(" " + stringsMatrix[i][j] + " ");
@@ -123,7 +142,6 @@ public class WorkArrays {
         }
         System.out.println();
     }
-
 }
 
 

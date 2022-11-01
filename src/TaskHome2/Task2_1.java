@@ -1,4 +1,4 @@
-package task.task2;
+package TaskHome2;
 
 public class Task2_1 {
     private byte nameByte;
