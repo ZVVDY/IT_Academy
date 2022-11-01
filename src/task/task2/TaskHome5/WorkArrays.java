@@ -28,7 +28,7 @@ public class WorkArrays {
 
                 } else {
 
-                    stringsMatrix[i][j] = symbolRandomN();
+                    stringsMatrix[i][j] = symbolRandom();
                 }
             }
         }
@@ -143,11 +143,3 @@ public class WorkArrays {
         System.out.println();
     }
 }
-
-
-
-
-
-
-
-

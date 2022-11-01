@@ -6,12 +6,8 @@ import java.util.Random;
  * Класс для выбора рандомных значений double и символов
  */
 public class RandomNumberAndSymbol {
-    public static String randomSymbol = symbolRandomN();
-
-
     public static double doubleRandom(int number) {
         Random random = new Random();
-        //numberTextRandom(1,28);
         return random.nextDouble(number);
     }
 
@@ -20,7 +16,7 @@ public class RandomNumberAndSymbol {
         return random.nextInt(endNum - startNum + 1) + startNum;
     }
 
-    public static String symbolRandomN() {
+    public static String symbolRandom() {
 
         int length = 7;
         char[] text = new char[length];
