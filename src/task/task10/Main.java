@@ -1,9 +1,10 @@
 package task.task10;
 
-import java.io.FileNotFoundException;
-
+/**
+ * Запуск Программы
+ */
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws RuntimeException {
         Menu.go();
     }
 }

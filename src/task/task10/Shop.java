@@ -3,29 +3,29 @@ package task.task10;
 import java.util.Scanner;
 
 public class Shop extends Product {
-    public Scanner sc = new Scanner(System.in);
-    public String str;
+    public Scanner scanner = new Scanner(System.in);
+    public String stringScanner;
 
     public void scannerProduct() throws RuntimeException {
-        Product clients = new Product();
-        clients.creatingWarehouseGoods();
-
+        creatingWarehouseGoods();
         while (true) {
-            str = sc.nextLine();
-            if (str.equals("T")) {
+            stringScanner = scanner.nextLine();
+            if (stringScanner.equals("T")) {
                 try {
-                    System.out.println(clients.allProduct);
-                    System.out.println("Введите номер товара для добавления в заказ, " +
-                            "чтобы выйти из магазина нажмите end: ");
-                    clients.orderTovar();
+                    printText(wreateWarehouseGoods());
+                    printText("Введите номер товара для добавления в заказ, " +
+                            "чтобы выйти на данном этапе из меню  магазина введите end: ");
+                    orderProduct();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
-            if (!str.equals("T") && !str.equals("end")) {
-                System.out.println("Введено не верное число");
+            if (!stringScanner.equals("T") && !stringScanner.equals("end")) {
+                printText("Введено не верный символ");
             }
-            if (str.equals("end")) {
+            if (stringScanner.equals("end")) {
+                scanner.close();
+                printText("Вы вышли из программы");
                 break;
             }
         }

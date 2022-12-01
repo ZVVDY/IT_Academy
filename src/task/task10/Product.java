@@ -2,11 +2,12 @@ package task.task10;
 
 import java.io.*;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Product extends Order {
-    private Integer id;
+    private Integer idProduct;
     private String nameProduct;
     private String dateManufacture;
     protected Map<Integer, Product> allProduct = new LinkedHashMap<>();
@@ -34,58 +35,80 @@ public class Product extends Order {
         }
     }
 
-    public void orderTovar() {
-        System.out.println("Ваш заказ");
-        System.out.println("Введите 0, что бы удалить заказ и 8 , что бы сохранить заказ");
+    public void orderProduct() {
+        printText("Введите:" + "\n" +
+                "0 - удалить заказ;" + "\n" +
+                "8 -сохранить заказ" + "\n " +
+                "9 -выбрать товар для удаления" + "\n " +
+                "10 -выйти из программы" +
+                "\n " + "Ваш заказ");
         Integer number;
+
         while (true) {
-            number = scan.nextInt();
+            try {
+                number = scan.nextInt();
+                if (number == 1) {
+                    orders.add(allProduct.get(1));
+                    System.out.println(orders);
+                }
+                if (number == 2) {
 
-            if (number == 1) {
+                    orders.add(allProduct.get(2));
+                    System.out.println(orders);
+                }
+                if (number == 3) {
 
-                orders.add(allProduct.get(1));
-                System.out.println(orders);
-            }
-            if (number == 2) {
+                    orders.add(allProduct.get(3));
+                    System.out.println(orders);
+                }
+                if (number == 4) {
 
-                orders.add(allProduct.get(2));
-                System.out.println(orders);
-            }
-            if (number == 3) {
+                    orders.add(allProduct.get(4));
+                    System.out.println(orders);
+                }
+                if (number == 5) {
 
-                orders.add(allProduct.get(3));
-                System.out.println(orders);
-            }
-            if (number == 4) {
+                    orders.add(allProduct.get(5));
+                    System.out.println(orders);
+                }
+                if (number == 6) {
 
-                orders.add(allProduct.get(4));
-                System.out.println(orders);
-            }
-            if (number == 5) {
+                    orders.add(allProduct.get(6));
+                    System.out.println(orders);
+                }
+                if (number == 7) {
 
-                orders.add(allProduct.get(5));
-                System.out.println(orders);
-            }
-            if (number == 6) {
+                    orders.add(allProduct.get(7));
+                    System.out.println(orders);
 
-                orders.add(allProduct.get(6));
-                System.out.println(orders);
+                }
+                if (number == 0) {
+                    orders.clear();
+                    System.out.println("Заказ удален");
+                    System.out.println("Новый заказ ");
+                }
+                if (number == 8) {
+                    productOrder();
+                    System.out.println("Заказ сохранен");
+                }
+                if (number == 9) {
+                    System.out.println("Введите номер попорядку для удаления");
+                    int numberRemove = scan.nextInt();
+                    orders.remove(numberRemove - 1);
+                    System.out.println(orders);
+                }
+                if (number == 10) {
+                    printText("Вы вышли из программы");
+                    scan.close();
+                    break;
+                }
+                if (number < 0 || number > 10) {
+                    printText("Введено не верное число");
+                }
+            } catch (RuntimeException e) {
+                printText("Нет элемента для удаления");
             }
-            if (number == 7) {
 
-                orders.add(allProduct.get(7));
-                System.out.println(orders);
-
-            }
-            if (number == 0) {
-                orders.clear();
-                System.out.println("Заказ удален");
-                System.out.println("Новый заказ ");
-            }
-            if (number == 8) {
-                productOrder();
-                System.out.println("Заказ сохранен");
-            }
         }
     }
 
@@ -97,29 +120,32 @@ public class Product extends Order {
                     .collect(Collectors.joining("\n"));
             return objects;
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new FileNotFoundException("Нет файла");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public Product(Integer id, String nameProduct, String dateManufacture) {
-        this.id = id;
+        this.idProduct = id;
         this.nameProduct = nameProduct;
         this.dateManufacture = dateManufacture;
+    }
+
+    public void printText(String text) {
+        System.out.println(text);
     }
 
     @Override
     public String toString() {
         return "Продукт{" +
-                "id=" + id +
+                "id=" + idProduct +
                 ", Название продукта='" + nameProduct + '\'' +
                 ", Дата изготовления='" + dateManufacture + '\'' +
                 '}' + '\n';
     }
 
     public Product() {
-
     }
 }
 
